@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jewelry Anyé · Productos</title>
+    <link rel="stylesheet" href="css/estilos.css" />
+    <style>
+        /* Estilos específicos para la página de categoría */
+        .detalle-categoria {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .detalle-categoria h2 {
+            font-size: 2.5rem;
+            color: #5a3f36;
+        }
+        .detalle-categoria p {
+            font-size: 1.2rem;
+            color: #8a7a72;
+        }
+        .btn-volver {
+            display: inline-block;
+            background: #c9a89b;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+        .btn-volver:hover {
+            background: #b58b7a;
+            transform: scale(1.05);
+        }
+        .btn-ver-mas {
+            display: inline-block;
+            background: #dbb8ab;
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+            max-width: 180px;
+            box-shadow: 0 3px 10px rgba(200, 150, 130, 0.2);
+            text-align: center;
+        }
+        .btn-ver-mas:hover {
+            background: #c9a094;
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(180, 130, 110, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero" style="padding: 40px 20px;">
+        <div class="hero-contenido">
+            <h1 style="font-size: clamp(2rem, 6vw, 3rem);"> Nuestros Productos</h1>
+            <a href="index.html" class="btn-volver">← Volver al catálogo</a>
+        </div>
+    </header>
+
+    <main class="contenedor-joyas">
+        <div id="info-categoria" class="detalle-categoria">
+            <!-- Se inyecta con JavaScript -->
+        </div>
+        <div id="productos-grid" class="grid-joyas">
+            <!-- Se inyecta con JavaScript -->
+        </div>
+    </main>
+
+    <footer>
+        <p>JEWELRY ANYIELI · Hecho con Amor y Arte · 2026 </p>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // ============================================================
+        // Obtener la categoría de la URL
+        // ============================================================
+        const params = new URLSearchParams(window.location.search);
+        const tipoCategoria = params.get('tipo');
+
+        const infoDiv = document.getElementById('info-categoria');
+        const productosGrid = document.getElementById('productos-grid');
+
+        // Buscar la categoría en los datos (que vienen de script.js)
+        const categoria = categorias.find(cat => cat.id === tipoCategoria);
+
+        if (!categoria) {
+            infoDiv.innerHTML = `
+                <h2>Categoría no encontrada</h2>
+                <p>Lo sentimos, no tenemos esa categoría.</p>
+                <a href="index.html" class="btn-volver">Volver al inicio</a>
+            `;
+            productosGrid.innerHTML = '';
+        } else {
+            // Mostrar título
+            infoDiv.innerHTML = `
+                <h2>${categoria.nombre}</h2>
+                <p>${categoria.productos.length} productos disponibles</p>
+            `;
+
+            // Generar tarjetas de productos
+            categoria.productos.forEach(prod => {
+                const article = document.createElement('article');
+                article.className = 'joya';
+                article.innerHTML = `
+                    <img src="${prod.imagen}" alt="${prod.nombre}">
+                    <h3>${prod.nombre}</h3>
+                    <p class="descripcion">${prod.descripcion}</p>
+                    <span class="precio">${prod.precio}</span>
+                    <button class="btn-ver-mas" onclick="alert('Próximamente: añadir al carrito')">Añadir al carrito</button>
+                `;
+                productosGrid.appendChild(article);
+            });
+        }
+    </script>
+
+</body>
+</html>

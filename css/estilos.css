@@ -1,0 +1,261 @@
+/* --- RESET Y FUENTE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    /* Fondo con degradado suave y un patrón sutil de flores (usando CSS) */
+    background: #f9f0eb; /* color base cálido */
+    /* Degradado radial para dar profundidad */
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255, 215, 215, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(245, 220, 210, 0.4) 0%, transparent 50%),
+        /* Pequeños puntos que simulan flores o brillos */
+        radial-gradient(circle at 20% 30%, #f5d6c6 1px, transparent 1px),
+        radial-gradient(circle at 80% 70%, #f5d6c6 1px, transparent 1px),
+        radial-gradient(circle at 40% 90%, #f5d6c6 1px, transparent 1px),
+        radial-gradient(circle at 70% 10%, #f5d6c6 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 60px 60px, 60px 60px, 60px 60px, 60px 60px;
+    background-position: 0 0, 0 0, 0 0, 30px 30px, 15px 45px, 45px 15px;
+    color: #4a3a35;
+    min-height: 100vh;
+}
+
+/* --- HERO (BANNER) --- */
+.hero {
+    background: linear-gradient(135deg, #fceae5 0%, #f5ded6 100%);
+    /* imagen de fondo decorativa (opcional) */
+    padding: 25px 20px 35px;
+    text-align: center;
+    border-bottom: 3px solid #e8c8b8;
+    position: relative;
+    overflow: hidden;
+}
+.logo-anyieli {
+    width: clamp(350px, 38vw, 520px);
+    max-width: 92%;
+    height: auto;
+    display: block;
+    margin: 0 auto 5px;
+}
+
+
+/* Decoración de flores en el hero (con pseudo-elementos) */
+.hero::before {
+    content: "🌸";
+    font-size: 8rem;
+    position: absolute;
+    left: -20px;
+    top: -30px;
+    opacity: 0.15;
+    transform: rotate(-15deg);
+}
+
+.hero::after {
+    content: "🌷";
+    font-size: 6rem;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    opacity: 0.12;
+    transform: rotate(10deg);
+}
+
+.hero-contenido {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: clamp(2.8rem, 10vw, 5rem);
+    /* color: #8b5a4b;  tono marrón rosado */
+    color: #a08f57;
+    letter-spacing: 6px;
+    font-weight: normal;
+    text-shadow: 2px 2px 4px rgba(255, 200, 180, 0.4);
+}
+
+.hero p {
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    color: #a07a6b;
+    margin: 15px 0 30px;
+    font-style: italic;
+}
+
+.btn-hero {
+    display: inline-block;
+    background: #c9a89b;
+    color: white;
+    padding: 14px 50px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(200, 150, 130, 0.3);
+}
+
+.btn-hero:hover {
+    background: #b58b7a;
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(180, 130, 110, 0.4);
+}
+
+/* --- CONTENEDOR PRINCIPAL --- */
+.contenedor-joyas {
+    max-width: 1300px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.titulo-seccion {
+    text-align: center;
+    font-size: 2rem;
+    color: #8b5a4b;
+    margin-bottom: 40px;
+    font-weight: normal;
+    letter-spacing: 2px;
+}
+
+/* --- GRID RESPONSIVE --- */
+.grid-joyas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 35px;
+}
+
+/* --- TARJETA DE JOYA (con estilo femenino) --- */
+.joya {
+    background: rgba(255, 248, 245, 0.85); /* fondo semi-transparente para que se vea el patrón de fondo */
+    backdrop-filter: blur(2px); /* efecto de desenfoque ligero (moderno) */
+    border-radius: 20px;
+    padding: 25px 20px 30px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(180, 140, 120, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #f0ded6;
+}
+
+.joya:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(200, 150, 130, 0.25);
+    border-color: #dbb8ab;
+    background: rgba(255, 252, 250, 0.95);
+}
+
+.joya img {
+    width: 100%;
+    max-height: 220px;
+    object-fit: contain;
+    background: #faf0ea;
+    border-radius: 15px;
+    padding: 10px;
+    margin-bottom: 15px;
+    transition: 0.3s;
+}
+
+.joya:hover img {
+    transform: scale(1.02);
+}
+
+.joya h3 {
+    font-size: 1.5rem;
+    color: #5a3f36;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.joya .descripcion {
+    color: #8a7a72;
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    font-style: italic;
+}
+
+.joya .precio {
+    font-size: 1.9rem;
+    color: #b58b7a; /* tono rosa viejo */
+    font-weight: bold;
+    display: block;
+    margin-bottom: 18px;
+}
+
+.joya button {
+    background: #dbb8ab;
+    color: white;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%;
+    max-width: 180px;
+    box-shadow: 0 3px 10px rgba(200, 150, 130, 0.2);
+}
+
+.joya button:hover {
+    background: #c9a094;
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(180, 130, 110, 0.3);
+}
+
+/* --- PIE DE PÁGINA --- */
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: #b09a8e;
+    border-top: 2px solid #ecd9d0;
+    max-width: 1300px;
+    margin: 0 auto;
+    font-size: 1rem;
+}
+
+/* --- RESPONSIVE (MÓVILES) --- */
+@media (max-width: 600px) {
+    .hero {
+        padding: 25px 15px 35px;
+    }
+
+    .hero::before {
+        font-size: 5rem;
+        left: -10px;
+        top: -20px;
+    }
+
+    .hero::after {
+        font-size: 4rem;
+        right: 0;
+        bottom: 0;
+    }
+
+    .grid-joyas {
+        gap: 25px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .joya {
+        padding: 15px 10px 20px;
+    }
+
+    .joya button {
+        max-width: 100%;
+        padding: 16px;
+    }
+
+    .joya .precio {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .btn-hero {
+        padding: 12px 30px;
+        font-size: 0.9rem;
+    }
+}

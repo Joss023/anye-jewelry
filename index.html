@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <!-- 👇 CLAVE PARA QUE SE ADAPTE A MÓVILES -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jewelry Anyé · Moda en Joyas</title>
+    <!-- 👇 Enlace al CSS (ruta relativa) -->
+    <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body>
+
+    <!-- BANNER PRINCIPAL -->
+<header class="hero">
+    <div class="hero-contenido">
+
+        <img src="img/ANYIELI.png" alt="ANYIELI Fine Jewelry" class="logo-anyieli">
+
+        <p>Elegancia que brilla en cada detalle</p>
+
+        <span class="etiqueta-coleccion">Colección 2026</span>
+
+    </div>
+</header>
+
+
+
+    <!-- CATÁLOGO DE JOYAS -->
+    <main class="contenedor-joyas">
+        <div class="grid-joyas">
+
+            <!-- Producto 1 (usando imagen local, pero por ahora usamos placeholder) -->
+            <div class="joya">
+                <!-- 👇 RUTA RELATIVA A LA CARPETA img/ (si tienes la imagen, la pones allí) -->
+               
+                <h3>Collar Solitario</h3>
+                 <img src="img/collar-oro.jpg" alt="Collar de oro" />
+                <p class="descripcion">Oro 18k · Diamante talla brillante</p>
+               
+                <button data-categoria="collares">Ver más</button>
+            </div>
+
+            <!-- Producto 2 -->
+            <div class="joya">
+              
+                <h3>Anillo Eterno</h3>
+                  <img src="img/anillo-plata.jpg" alt="Anillo de plata" />
+                <p class="descripcion">Plata 925 · Zirconia cúbica</p>
+               <!--<span class="precio">$1,200</span>-->
+                <button data-categoria="anillos">Ver más</button>
+            </div>
+
+            <!-- Producto 3 -->
+            <div class="joya">
+                
+                <h3>Pulsera Mística</h3>
+                <img src="img/pulsera-perlas.jpg" alt="Pulsera con perlas" />
+                <p class="descripcion">Chapado en oro · Perlas de agua dulce</p>
+               <!--<span class="precio">$1,200</span>-->
+                <button data-categoria="pulseras">Ver más</button>
+            </div>
+
+            <!-- Producto 4 -->
+            <div class="joya">
+               
+                <h3>Aros Clásicos</h3>
+                 <img src="img/aros-perla.jpg" alt="Aros de perla" />
+                <p class="descripcion">Oro blanco · Perla natural</p>
+                <!--<span class="precio">$1,200</span>-->
+                <button data-categoria="aros">Ver más</button>
+            </div>
+
+            <!-- Producto 5 (extra) -->
+            <div class="joya">
+               
+                <h3>Reloj Elegancia</h3>
+                 <img src="img/reloj-dorado.jpg" alt="Reloj dorado" />
+                <p class="descripcion">Acero dorado · Esfera perlada</p>
+               <!--<span class="precio">$1,200</span>-->
+                <button data-categoria="relojes">Ver más</button>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p> JEWELRY ANYIELI </p>
+        <p> Hecho con Amor y Arte</p>
+         <p>-2026-</p>
+    </footer>
+
+    
+    <script src="js/script.js"></script>
+</body>
+</html>

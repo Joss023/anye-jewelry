@@ -76,6 +76,32 @@
         </div>
     </main>
 
+    <button id="btn-carrito-flotante" class="btn-carrito-flotante" aria-label="Abrir carrito">
+        <span class="btn-carrito-icon">🛒</span>
+        <span id="carrito-count" class="carrito-count">0</span>
+    </button>
+
+    <div id="toast-carrito" class="toast-carrito">
+        <span class="toast-icon"> </span>
+        <span class="toast-text">Producto añadido</span>
+        <button id="toast-ver-carrito" class="toast-ver-carrito">Ver carrito</button>
+    </div>
+
+    <div id="modal-carrito" class="modal-carrito">
+        <div class="modal-carrito-contenido">
+            <button id="btn-cerrar-modal" class="btn-cerrar-modal" aria-label="Cerrar carrito">×</button>
+            <h2>Productos a llevar</h2>
+            <div id="modal-carrito-items" class="modal-carrito-items">
+                <p class="carrito-vacio-modal">No hay productos seleccionados.</p>
+            </div>
+            <div class="modal-carrito-total">
+                <span>Total</span>
+                <span id="modal-total">$0</span>
+            </div>
+            <button id="btn-comprar" class="btn-comprar">Comprar</button>
+        </div>
+    </div>
+
     <footer>
         <p>JEWELRY ANYIELI · Hecho con Amor y Arte · 2026 </p>
     </footer>
@@ -109,18 +135,161 @@
             `;
 
             // Generar tarjetas de productos
+            const placeholderProducto = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23faf0ea'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='88' font-family='Arial' font-weight='700' fill='%238a7a72'%3E×%3C/text%3E%3C/svg%3E";
             categoria.productos.forEach(prod => {
                 const article = document.createElement('article');
                 article.className = 'joya';
                 article.innerHTML = `
-                    <img src="${prod.imagen}" alt="${prod.nombre}">
                     <h3>${prod.nombre}</h3>
+                    <img src="${prod.imagen}" alt="${prod.nombre}" onerror="this.onerror=null;this.src='${placeholderProducto}';">
                     <p class="descripcion">${prod.descripcion}</p>
                     <span class="precio">${prod.precio}</span>
-                    <button class="btn-ver-mas" onclick="alert('Próximamente: añadir al carrito')">Añadir al carrito</button>
+                    <button class="btn-ver-mas btn-agregar-carrito" data-nombre="${prod.nombre}" data-precio="${prod.precio}" data-imagen="${prod.imagen}">Añadir al carrito</button>
                 `;
                 productosGrid.appendChild(article);
             });
+
+            // Lógica de persistencia del carrito en localStorage
+            const carritoStorageKey = 'anye_jewelry_carrito';
+            const carrito = leerCarrito();
+            const carritobtn = document.getElementById('btn-carrito-flotante');
+            const modalCarrito = document.getElementById('modal-carrito');
+            const btnCerrarModal = document.getElementById('btn-cerrar-modal');
+            const modalItems = document.getElementById('modal-carrito-items');
+            const modalTotal = document.getElementById('modal-total');
+            const carritoCount = document.getElementById('carrito-count');
+            const toastCarrito = document.getElementById('toast-carrito');
+            const toastVerCarrito = document.getElementById('toast-ver-carrito');
+
+            function leerCarrito() {
+                try {
+                    const guardado = localStorage.getItem(carritoStorageKey);
+                    return guardado ? JSON.parse(guardado) : [];
+                } catch (e) {
+                    return [];
+                }
+            }
+
+            function guardarCarrito() {
+                localStorage.setItem(carritoStorageKey, JSON.stringify(carrito));
+            }
+
+            function precioNumero(precio) {
+                return Number(precio.replace(/[^\d]/g, '')) || 0;
+            }
+
+            function renderCarrito() {
+                const totalArticulos = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+                const totalPrecio = carrito.reduce((sum, item) => sum + (precioNumero(item.precio) * item.cantidad), 0);
+
+                carritoCount.textContent = totalArticulos;
+
+                if (carrito.length === 0) {
+                    modalItems.innerHTML = '<p class="carrito-vacio-modal">No hay productos seleccionados.</p>';
+                    modalTotal.textContent = '$0';
+                    guardarCarrito();
+                    return;
+                }
+
+                modalItems.innerHTML = '';
+                carrito.forEach(item => {
+                    const row = document.createElement('div');
+                    row.className = 'modal-carrito-row';
+                    row.innerHTML = `
+                        <div class="modal-carrito-imagen">
+                            <img src="${item.imagen}" alt="${item.nombre}" onerror="this.onerror=null;this.src='${placeholderProducto}';">
+                        </div>
+                        <div class="modal-carrito-info">
+                            <span class="modal-carrito-nombre">${item.nombre}</span>
+                            <span class="modal-carrito-precio">${item.precio}</span>
+                        </div>
+                        <div class="modal-carrito-acciones">
+                            <span class="modal-carrito-cantidad">x${item.cantidad}</span>
+                            <button class="btn-remover-carrito" data-nombre="${item.nombre}" title="Eliminar">×</button>
+                        </div>
+                    `;
+                    modalItems.appendChild(row);
+                });
+
+                modalItems.querySelectorAll('.btn-remover-carrito').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const nombre = button.dataset.nombre;
+                        const idx = carrito.findIndex(item => item.nombre === nombre);
+                        if (idx >= 0) {
+                            carrito.splice(idx, 1);
+                            renderCarrito();
+                        }
+                    });
+                });
+
+                modalTotal.textContent = '$' + totalPrecio.toLocaleString('es-MX');
+                guardarCarrito();
+            }
+
+            function mostrarToast(nombre) {
+                toastCarrito.querySelector('.toast-text').textContent = 'Añadiste ' + nombre + ' al carrito';
+                toastCarrito.classList.add('visible');
+                clearTimeout(mostrarToast.timeout);
+                mostrarToast.timeout = setTimeout(() => {
+                    toastCarrito.classList.remove('visible');
+                }, 1800);
+            }
+
+            document.querySelectorAll('.btn-agregar-carrito').forEach(button => {
+                button.addEventListener('click', () => {
+                    const nombre = button.dataset.nombre;
+                    const precio = button.dataset.precio;
+                    const imagen = button.dataset.imagen;
+                    const prod = categoria.productos.find(item => item.nombre === nombre);
+
+                    if (!prod) return;
+
+                    const existente = carrito.find(item => item.nombre === nombre);
+                    if (existente) {
+                        existente.cantidad += 1;
+                    } else {
+                        carrito.push({ nombre, precio, imagen, cantidad: 1 });
+                    }
+
+                    button.textContent = 'Añadir +1';
+                    button.classList.add('agregado');
+                    renderCarrito();
+                    mostrarToast(nombre);
+                });
+            });
+
+            carritobtn.addEventListener('click', () => {
+                modalCarrito.classList.add('visible');
+            });
+
+            btnCerrarModal.addEventListener('click', () => {
+                modalCarrito.classList.remove('visible');
+            });
+
+            toastVerCarrito.addEventListener('click', () => {
+                modalCarrito.classList.add('visible');
+                toastCarrito.classList.remove('visible');
+            });
+
+            const btnComprar = document.getElementById('btn-comprar');
+            btnComprar.addEventListener('click', () => {
+                if (carrito.length === 0) {
+                    modalItems.innerHTML = '<p class="carrito-vacio-modal">No hay productos seleccionados.</p>';
+                    return;
+                }
+
+                const textoProductos = carrito.map(item => `• ${item.nombre} x${item.cantidad} - ${item.precio}`).join('\n');
+                const total = carrito.reduce((sum, item) => sum + precioNumero(item.precio) * item.cantidad, 0);
+                const mensaje = `Hola, quiero pedir estos productos:\n${textoProductos}\n\nTotal estimado: ${'$' + total.toLocaleString('es-MX')}`;
+
+                const telefonoWhatsApp = '945326882';
+                const urlWhatsApp = `https://wa.me/${telefonoWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+
+                window.open(urlWhatsApp, '_blank');
+            });
+
+            // Mostrar el carrito guardado cuando la página se carga
+            renderCarrito();
         }
     </script>
 

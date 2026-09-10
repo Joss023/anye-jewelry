@@ -286,6 +286,10 @@
                 const urlWhatsApp = `https://wa.me/${telefonoWhatsApp}?text=${encodeURIComponent(mensaje)}`;
 
                 window.open(urlWhatsApp, '_blank');
+
+                carrito.length = 0;
+                guardarCarrito();
+                renderCarrito();
             });
 
             // Mostrar el carrito guardado cuando la página se carga

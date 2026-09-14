@@ -41,8 +41,8 @@ const categorias = [
         ]
     },
     {
-        id: 'relojes',
-        nombre: 'Relojes',
+        id: 'collaresxuping',
+        nombre: 'Collares XUPING',
         productos: [
             { nombre: 'Reloj Elegancia', precio: '$2,300', descripcion: 'Acero dorado · Esfera perlada', imagen: 'img/reloj-dorado.jpg' },
             { nombre: 'Reloj Clásico', precio: '$1,800', descripcion: 'Acero plateado · Cuarzo', imagen: 'img/reloj-plata.jpg' }

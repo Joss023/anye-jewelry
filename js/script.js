@@ -50,12 +50,15 @@ const categorias = [
     },
     {
         id: 'collaresxuping',
-        nombre: 'Collar XUPING',
+       
         descripcion: 'Elegancia que eleva cualquier look',
         imagen: 'img/collar xuping/fondo_collar_xuping.jpeg',
         productos: [
-            { nombre: 'Collar XUPING', precio: '$2,300', descripcion: 'Collar con diseño exclusivo estilo XUPING', imagen: 'img/collar xuping/fondo_collar_xuping.jpeg' },
-            { nombre: 'Collar XUPING Clásico', precio: '$1,800', descripcion: 'Versión clásica y elegante del collar XUPING', imagen: 'img/collar xuping/fondo_collar_xuping.jpeg' }
+            { nombre: 'Collar Selene', precio: '$18.60', descripcion: ' Collar Media Luna Brillo Xuping  ', imagen: 'img/collar xuping/Collar Selene.jpeg' },
+            { nombre: 'Collar Corazón de Luz', precio: '$19.50', descripcion: ' Collar Corazón Cristal De Piedra Xuping ', imagen: 'img/collar xuping/Collar Corazón de Luz.jpeg' },
+            { nombre: 'Corazón Puffy Snake Chain', precio: '$19.20', descripcion: ' Collar Corazón Liso con Cadena de Esferas xuping', imagen: 'img/collar xuping/Corazón Puffy Snake Chain.jpeg' },
+            { nombre: 'Collar Amore Brillante', precio: '$19.50', descripcion: 'Collar Corazón Pave Doble xuping', imagen: 'img/collar xuping/Collar Amore Brillante.jpeg' },
+            { nombre: 'Collar Amore Clásico', precio: '$18.80', descripcion: 'Corazón Liso xuping ', imagen: 'img/collar xuping/Collar Amore Clásico.jpeg' }
         ]
     }
 ];

@@ -50,7 +50,7 @@ const categorias = [
     },
     {
         id: 'collaresxuping',
-       
+        nombre: 'Collares Xuping',
         descripcion: 'Elegancia que eleva cualquier look',
         imagen: 'img/collar xuping/fondo_collar_xuping.jpeg',
         productos: [

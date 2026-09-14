@@ -282,7 +282,7 @@
                 const total = carrito.reduce((sum, item) => sum + precioNumero(item.precio) * item.cantidad, 0);
                 const mensaje = `Hola, quiero pedir estos productos:\n${textoProductos}\n\nTotal estimado: ${'$' + total.toLocaleString('es-MX')}`;
 
-                const telefonoWhatsApp = '945326882';
+                const telefonoWhatsApp = '964945250';
                 const urlWhatsApp = `https://wa.me/${telefonoWhatsApp}?text=${encodeURIComponent(mensaje)}`;
 
                 window.open(urlWhatsApp, '_blank');

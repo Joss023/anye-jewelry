@@ -38,9 +38,9 @@ const categorias = [
         descripcion: 'Detalles que enamoran en tu muñeca',
         imagen: 'img/pulseras/fondo_pulsera.jpeg',
         productos: [
-            { nombre: 'Pulsera Mística', precio: '$890', descripcion: 'Chapado en oro · Perlas', imagen: 'img/pulseras/fondo_pulsera.jpeg' },
-            { nombre: 'Pulsera Cadena', precio: '$350', descripcion: 'Plata con dije corazón', imagen: 'img/pulseras/fondo_pulsera.jpeg' },
-            { nombre: 'Pulsera Charm', precio: '$620', descripcion: 'Oro rosa con perla', imagen: 'img/pulseras/fondo_pulsera.jpeg' }
+            { nombre: 'Pulsera Nacar Heart', precio: '$15.40', descripcion: 'Pulsera en Chape en Oro Xuping con Dije de Corazón en Nácar y Circonias Gotas', imagen: 'img/pulseras/Nacar Heart.jpeg' },
+            { nombre: 'Pulsera Puffy Heart & Sparkle', precio: '$16.40', descripcion: 'Pulsera en Chape en Oro Xuping con Corazón Abombado 3D, Circonias Biseladas y Tubos Pulidos', imagen: 'img/pulseras/Puffy.jpeg' }
+
         ]
     },
     {

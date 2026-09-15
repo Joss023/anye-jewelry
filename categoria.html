@@ -143,7 +143,7 @@
                     <h3>${prod.nombre}</h3>
                     <img src="${prod.imagen}" alt="${prod.nombre}" onerror="this.onerror=null;this.src='${placeholderProducto}';">
                     <p class="descripcion">${prod.descripcion}</p>
-                    <span class="precio">${prod.precio}</span>
+                    <span class="precio">${formatearPrecio(prod.precio)}</span>
                     <button class="btn-ver-mas btn-agregar-carrito" data-nombre="${prod.nombre}" data-precio="${prod.precio}" data-imagen="${prod.imagen}">Añadir al carrito</button>
                 `;
                 productosGrid.appendChild(article);
@@ -175,7 +175,17 @@
             }
 
             function precioNumero(precio) {
-                return Number(precio.replace(/[^\d]/g, '')) || 0;
+                const valor = String(precio).replace(',', '.').replace(/[^\d.]/g, '');
+                return Number(valor) || 0;
+            }
+
+            function formatearPrecio(precio) {
+                return new Intl.NumberFormat('es-PE', {
+                    style: 'currency',
+                    currency: 'PEN',
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                }).format(precioNumero(precio));
             }
 
             function renderCarrito() {
@@ -186,7 +196,7 @@
 
                 if (carrito.length === 0) {
                     modalItems.innerHTML = '<p class="carrito-vacio-modal">No hay productos seleccionados.</p>';
-                    modalTotal.textContent = '$0';
+                    modalTotal.textContent = formatearPrecio(0);
                     guardarCarrito();
                     return;
                 }
@@ -201,7 +211,7 @@
                         </div>
                         <div class="modal-carrito-info">
                             <span class="modal-carrito-nombre">${item.nombre}</span>
-                            <span class="modal-carrito-precio">${item.precio}</span>
+                            <span class="modal-carrito-precio">${formatearPrecio(item.precio)}</span>
                         </div>
                         <div class="modal-carrito-acciones">
                             <span class="modal-carrito-cantidad">x${item.cantidad}</span>
@@ -222,7 +232,7 @@
                     });
                 });
 
-                modalTotal.textContent = '$' + totalPrecio.toLocaleString('es-MX');
+                modalTotal.textContent = formatearPrecio(totalPrecio);
                 guardarCarrito();
             }
 
@@ -278,9 +288,9 @@
                     return;
                 }
 
-                const textoProductos = carrito.map(item => `• ${item.nombre} x${item.cantidad} - ${item.precio}`).join('\n');
+                const textoProductos = carrito.map(item => `• ${item.nombre} x${item.cantidad} - ${formatearPrecio(item.precio)}`).join('\n');
                 const total = carrito.reduce((sum, item) => sum + precioNumero(item.precio) * item.cantidad, 0);
-                const mensaje = `Hola, quiero pedir estos productos:\n${textoProductos}\n\nTotal estimado: ${'$' + total.toLocaleString('es-MX')}`;
+                const mensaje = `Hola, quiero pedir estos productos:\n${textoProductos}\n\nTotal estimado: ${formatearPrecio(total)}`;
 
                 const telefonoWhatsApp = '964945250';
                 const urlWhatsApp = `https://wa.me/${telefonoWhatsApp}?text=${encodeURIComponent(mensaje)}`;

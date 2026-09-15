@@ -10,9 +10,14 @@ const categorias = [
         descripcion: 'Elegancia que realza tu cuello',
         imagen: 'img/collar/fondo_collar.jpeg',
         productos: [
-            { nombre: 'Collar Solitario', precio: '$1,200', descripcion: 'Oro 18k · Diamante talla brillante', imagen: 'img/collar/fondo_collar.jpeg' },
-            { nombre: 'Collar Perla', precio: '$850', descripcion: 'Perlas de agua dulce', imagen: 'img/collar/fondo_collar.jpeg' },
-            { nombre: 'Collar Lágrima', precio: '$1,450', descripcion: 'Oro blanco con perla', imagen: 'img/collar/fondo_collar.jpeg' }
+            { nombre: 'Collar Sakura Romántica', precio: '$16.50', descripcion: 'Collar de Acero Inoxidable Dorado con Dije de Flor en Tono Rosa Pastel, giratorio', imagen: 'img/collar/Sakura Romántica.jpeg' },
+            { nombre: 'Collar Radiant Bloom', precio: '$16.50', descripcion: 'Collar de Acero Inoxidable Dorado con Dije de Flor en Pétalos de Circonias Corte Marquise de Alto ', imagen: 'img/collar/badiant bloom.jpeg' },
+            { nombre: 'Collar Golden Sunshine', precio: '$16.50', descripcion: 'Collar de Acero Inoxidable Dorado con Dije de Girasol Esmaltado, Centro de Circonias y Gota de Cristal Colgante, giratorio ', imagen: 'img/collar/Collar Girasol.jpeg' },
+            { nombre: 'Collar Eternal Hope', precio: '$16.50', descripcion: 'Collar de Acero Inoxidable Dorado con Dije de Girasol en Pavé de Circonias, giratorio y Hojas con Cristales Verdes', imagen: 'img/collar/Girasol Eternal Hope.jpeg' },
+            { nombre: 'Collar Vuelo de Mariposa', precio: '$16.50', descripcion: 'Collar de Acero Inoxidable Dorado con Dije Doble de Mariposa Calada y Pavé de Microcirconias Vuelo de Mariposa', imagen: 'img/collar/Vuelo de Mariposa.jpeg' },
+            { nombre: 'Collar Trébol de la Suerte', precio: '$16.50', descripcion: 'Collar de Acero Inoxidable Dorado con Dije de Trébol de Cuatro Hojas , giratorio de Cristal Nacarado Efecto Ojo de Gato', imagen: 'img/collar/Trébol de la Suerte.jpeg' },
+            { nombre: 'Collar Sol Celestial Jade', precio: '$16.50', descripcion: 'Collar de Acero Inoxidable Dorado con Dije de Sol de Rayos Esculpidos, giratorio y Piedra Verde Efecto Ojo de Gato', imagen: 'img/collar/Sol Celestial Jade.jpeg' }
+
         ]
     },
     {
@@ -21,9 +26,10 @@ const categorias = [
         descripcion: 'Compromiso y estilo en tus manos',
         imagen: 'img/anillo/fondo_anillo.jpeg',
         productos: [
-            { nombre: 'Anillo Eterno', precio: '$450', descripcion: 'Plata 925 · Zirconia', imagen: 'img/anillo/fondo_anillo.jpeg' },
-            { nombre: 'Anillo Solitario', precio: '$2,100', descripcion: 'Oro 18k con diamante', imagen: 'img/anillo/fondo_anillo.jpeg' },
-            { nombre: 'Anillo Alianza', precio: '$780', descripcion: 'Plata con oro rosa', imagen: 'img/anillo/fondo_anillo.jpeg' }
+            { nombre: 'Estrella del Mar', precio: '$6', descripcion: 'Sortija Regulable de Acero Inoxidable Dorada', imagen: 'img/anillo/Estrella del Mar.jpeg' },
+            { nombre: 'Anillo Laurel Gold', precio: '$6', descripcion: 'Sortija Regulable de Acero Inoxidable Dorada con Diseño Calado de Hojas y Bordes Punteados', imagen: 'img/anillo/Laurel Gold.jpeg' },
+            { nombre: 'Anillo Coquette Bow', precio: '$6', descripcion: 'Sortija Regulable de Acero Inoxidable Dorada', imagen: 'img/anillo/Coquette Bow.jpeg' },
+            { nombre: 'Anillo Sweet Heart', precio: '$6', descripcion: 'Sortija Regulable de Acero Inoxidable Dorada con Silueta de Corazón Calado', imagen: 'img/anillo/sweet.jpeg' }
         ]
     },
     {
@@ -38,14 +44,19 @@ const categorias = [
         ]
     },
     {
-        id: 'aros',
-        nombre: 'Aros',
+        id: 'Aretes',
+        nombre: 'Aretes',
         descripcion: 'El toque perfecto para tu mirada',
         imagen: 'img/arete/fondo_arete.jpeg',
         productos: [
-            { nombre: 'Aros Clásicos', precio: '$1,550', descripcion: 'Oro blanco · Perla', imagen: 'img/arete/fondo_arete.jpeg' },
-            { nombre: 'Aros Aro', precio: '$280', descripcion: 'Plata 925', imagen: 'img/arete/fondo_arete.jpeg' },
-            { nombre: 'Aros Colgantes', precio: '$690', descripcion: 'Oro rosa · Perlas', imagen: 'img/arete/fondo_arete.jpeg' }
+            { nombre: 'Aretes  Infinito Royale', precio: '$12.50', descripcion: 'Broqueles Escultóricos en Chape en Oro Xuping con Diseño de Nudo Tejido y Calado', imagen: 'img/arete/InfinitoRoyale.jpeg' },
+            { nombre: 'Aretes Encaje Floral', precio: '$8.50', descripcion: 'Argollas en Arete Caladas en Chape en Oro Xuping con Patrón Geométrico Flora', imagen: 'img/arete/Encaje Floral.jpeg' },
+            { nombre: 'Aretes Satin Gold', precio: '$8.80', descripcion: 'Argollas en Arete Anchas en Chape en Oro Xuping con Acabado Satinado y Líneas Lisas', imagen: 'img/arete/Satin Gold.jpeg' },
+            { nombre: 'Aretes Facetas Geométricas', precio: '$8.50', descripcion: 'Argollas en Arete Anchas Facetadas en Chape en Oro Xuping de Estilo Escultórico', imagen: 'img/arete/Facetas Geométricas.jpeg' },
+            { nombre: 'Aretes Canoas ', precio: '$8.50', descripcion: 'Argollas en Arete Gruesas Abombadas en Chape en Oro Xuping con Acabado Espejo', imagen: 'img/arete/Canoas Argollas.jpeg' },
+            { nombre: 'Aretes Textura & Luz', precio: '$8.80', descripcion: 'Argolla en Arete en Chape en Oro Xuping con Acabado Diamantado y Ranuras Pulidas', imagen: 'img/arete/Textura Luz.jpeg' },
+            { nombre: 'Aretes Rainbow Channel', precio: '$8.80', descripcion: 'Argollas en Arete en Chape en Oro Xuping con Circonias Multicolor en Engaste Cuadrado', imagen: 'img/arete/Rainbow Channel.jpeg' },
+            { nombre: 'Aretes Bolines & Relieve', precio: '$8.80', descripcion: 'Argollas en Arete en Chape en Oro Xuping con Diseño de Esferas/Balines en Relieve', imagen: 'img/arete/Bolines Relieve.jpeg' }
         ]
     },
     {
